@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Autocomplete from '../autocomplete';
+
+import Page from './page';
 import './styles.css';
 
 class IAppBar extends Component {
@@ -25,23 +22,12 @@ class IAppBar extends Component {
         } = this.props;
 
         return (
-            <AppBar position="static">
-                <Toolbar className="appbar">
-                    <Typography variant="h6" color="inherit">
-                        Programax
-                    </Typography>
-
-                    <Autocomplete
-                        text={text}
-                        suggestions={suggestions || []}
-                        onChangeText={(text) => {
-                            this.setState({ text });
-                        }}
-                    />
-
-                    <AccountCircle />
-                </Toolbar>
-            </AppBar>
+            <Page
+                text={text}
+                suggestions={suggestions}
+                onChangeText={() => this.setState({ text })}
+                onChangeSelection={() => { }}
+            />
         );
     }
 }
