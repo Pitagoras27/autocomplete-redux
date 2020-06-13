@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import AppBar from './components/appBar';
-import Results from './components/results';
+import Results from './components/results/index2';
 import Details from './components/details';
 
 import items from './data/items';
