@@ -23,6 +23,7 @@ class Main extends Component {
       onPage,
       idItem,
     } = this.state;
+    const matchItem = items.filter(element => element.id === idItem);
 
     return (
       <>
@@ -35,7 +36,7 @@ class Main extends Component {
         }
         { onPage === 'details' &&
             <Details
-              currentItem={items[idItem]}
+              currentItem={matchItem[0]}
               currentPage={this.onSetCurrentPage}
             />
         }
