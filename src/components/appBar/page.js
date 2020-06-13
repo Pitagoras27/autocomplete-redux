@@ -24,7 +24,7 @@ const Page = ({
         <Autocomplete
           text={text}
           suggestions={suggestions}
-          onChangeText={() => { }}
+          onChangeText={onChangeText}
           onChangeSelection={onChangeSelection}
         />
 

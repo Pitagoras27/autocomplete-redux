@@ -12,6 +12,8 @@ class IAppBar extends Component {
         };
     }
 
+    onChangeText = text => this.setState({ text });
+
     render() {
         const {
             text,
@@ -25,7 +27,7 @@ class IAppBar extends Component {
             <Page
                 text={text}
                 suggestions={suggestions}
-                onChangeText={() => this.setState({ text })}
+                onChangeText={this.onChangeText}
                 onChangeSelection={() => { }}
             />
         );
