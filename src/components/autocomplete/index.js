@@ -5,6 +5,9 @@ import './styles.css';
 
 class Autocomplete extends Component {
   render() {
+    const {
+      onChangeText,
+      text } = this.props;
     return (
       <div className="main-container">
         <div className="container-icon">
@@ -12,9 +15,11 @@ class Autocomplete extends Component {
         </div>
         <InputBase
           placeholder="Search…"
-          value=''
-          style={{ width: '100%' }}
-          onChange={() => {}}
+          value={text}
+          onChange={(event) => {
+            const newText = event.target.value;
+            onChangeText(newText);
+          }}
           onBlur={() => {}}
           onFocus={() => {}}
         />
