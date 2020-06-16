@@ -1,12 +1,13 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, compose } from 'redux';
 
 import suggestions from './reducers/suggestions';
-import INITIAL_STATE from '../data/items';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
   suggestions,
 });
 
-const store = createStore(reducer, INITIAL_STATE);
+const store = createStore(reducer, composeEnhancers());
 
 export default store;
