@@ -31,23 +31,32 @@ class Autocomplete extends Component {
             const newText = event.target.value;
             onChangeText(newText);
           }}
-          onBlur={() => {}}
-          onFocus={() => {}}
+          onBlur={() => {
+            this.setState({ isOpen: false });
+          }}
+          onFocus={() => {
+            if(text) this.setState({ isOpen: true });
+          }}
+          onKeyPress={e => {
+            if(e.key === 'Enter' && text) onChangeSelection(text);
+          }}
         />
-        {isOpen &&
-          <Paper className="container-results" square>
+        {
+          isOpen &&
+            <Paper className="container-results" square>
               {suggestions.map(suggestion =>
-              <MenuItem
+                <MenuItem
                   key={suggestion.id}
                   component="div"
                   onClick={() => {
-                      onChangeSelection(suggestion.title);
-                      this.setState({ isOpen: false });
+                    onChangeSelection(suggestion.title);
+                    this.setState({ isOpen: false });
                   }}
-              >
-                  {suggestion.title}
-              </MenuItem>)}
-          </Paper>}
+                >
+                  {suggestion.title || 'IS open menu suggestions!'}
+                </MenuItem>)}
+            </Paper>
+        }
       </div>
     );
   }
@@ -62,7 +71,7 @@ Autocomplete.propTypes= {
 
 Autocomplete.defaultProps= {
   text: '',
-  suggestions: [],
+  suggestions: [1],
   onChangeSelection: () => {},
   onChangeText: () => {},
 }

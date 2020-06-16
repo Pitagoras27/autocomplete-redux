@@ -27,7 +27,7 @@ class Main extends Component {
 
     return (
       <>
-        <AppBar suggestions={null} />
+        <AppBar />
         { onPage === 'results' &&
             <Results 
               dataList={items}
