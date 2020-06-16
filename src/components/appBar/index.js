@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { actionSuggestions } from '../../redux/actions/actionSuggestions';
+import { actionResults } from '../../redux/actions/actionResults';
 import Page from './page';
 import './styles.css';
 
@@ -20,6 +21,10 @@ class IAppBar extends Component {
         actionSuggestions(text);
     }
 
+    onChangeSelection = text => {
+        const { actionResults } = this.props;
+        actionResults(text);
+    }
     render() {
         const {
             text,
@@ -34,7 +39,7 @@ class IAppBar extends Component {
                 text={text}
                 suggestions={suggestions}
                 onChangeText={this.onChangeText}
-                onChangeSelection={() => { }}
+                onChangeSelection={this.onChangeSelection}
             />
         );
     }
@@ -46,6 +51,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = {
     actionSuggestions,
+    actionResults,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IAppBar);
