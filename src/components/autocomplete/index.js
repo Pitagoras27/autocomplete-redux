@@ -30,6 +30,13 @@ class Autocomplete extends Component {
           onChange={(event) => {
             const newText = event.target.value;
             onChangeText(newText);
+
+            if(!isOpen && newText) {
+              this.setState({ isOpen: true });
+            } else if (isOpen && !newText) {
+              this.setState({ isOpen: false });
+            }
+
           }}
           onBlur={() => {
             this.setState({ isOpen: false });
