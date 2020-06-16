@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import withRouter from 'react-router-dom';
+
 import Page from './page';
 
 import './styles.css';
 
-
 class Results extends Component {
-  constructor(props) {
-    super(props);
+  state = {};
 
-    this.state = {
-    };
-
-    this.goTo = this.goTo.bind(this);
-  }
-
-  goTo(path) {
+  goTo = path => {
     this.props.history.push(path);
   }
 
@@ -35,4 +29,8 @@ class Results extends Component {
   }
 }
 
-export default Results;
+const mapStateToProps = store => ({
+  dataList: store.results,
+});
+
+export default connect(mapStateToProps, null)(Results);

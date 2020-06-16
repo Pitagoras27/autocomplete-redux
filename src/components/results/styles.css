@@ -1,6 +1,9 @@
  
 .results-page {
   padding: 3rem 1rem;
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
 }
 
 .card {

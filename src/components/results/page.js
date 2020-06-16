@@ -4,12 +4,16 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+
 const Results = props => {
   return (
-    <div>
-      {
+    <div className="results-page">
+      {!props.dataList.length ?
+        <Typography variant="h5" component="h3" className="page-message">
+          There are no results
+        </Typography> :
         props.dataList.map(item =>
-          <div className="card-container" key={item.id}>
+          (<div className="card-container" key={item.id}>
             <Card
               className="card"
               onClick={() => props.currentPage('details', item.id)}
@@ -34,9 +38,8 @@ const Results = props => {
               </CardActionArea>
 
             </Card>
-          </div>
-        )
-      }
+          </div>)
+        )}
     </div>
   )
 }
