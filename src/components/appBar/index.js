@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { actionSuggestions } from '../../redux/actions/actionSuggestions';
 import Page from './page';
 import './styles.css';
 
@@ -12,7 +14,11 @@ class IAppBar extends Component {
         };
     }
 
-    onChangeText = text => this.setState({ text });
+    onChangeText = text => {
+        const { actionSuggestions } = this.props;
+        this.setState({ text });
+        actionSuggestions(text);
+    }
 
     render() {
         const {
@@ -34,4 +40,12 @@ class IAppBar extends Component {
     }
 }
 
-export default IAppBar;
+const mapStateToProps = store => ({
+    suggestions: store.suggestions,
+});
+
+const mapDispatchToProps = {
+    actionSuggestions,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IAppBar);
