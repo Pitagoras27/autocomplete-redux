@@ -13,6 +13,8 @@ class Main extends Component {
   }
 
   onSetCurrentPage = (page, idItem) => {
+    console.log('Segundo commit en el repositorio remoto, prueba con rebase i')
+    console.log('Tercer commit en repositiorio remoto, prueba con rebase i');
     this.setState({
       onPage: page,
       idItem,

@@ -7,6 +7,7 @@
 
 # editor
 autocomplete-app-redux.code-workspace
+autocomplete-redux.code-workspace
 
 # testing
 /coverage
